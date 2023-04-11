@@ -3,7 +3,7 @@ import './App.css';
 
 import FunctionComponent from './components/FunctionComponent';
 import ClassComponent from './components/ClassComponent';
-
+import PureComp from './components/PureComp';
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
       </div>
       <FunctionComponent />
       <ClassComponent />
+      <PureComp text = "Pure" />
     </>
   );
 }
