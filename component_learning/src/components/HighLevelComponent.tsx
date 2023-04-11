@@ -1,18 +1,6 @@
 import React, { ReactElement } from "react";
-import { JsxElement } from "typescript";
 
 import Display from "./Display";
-
-// class HighLevelComponent extends React.Component {
-//     render(): React.ReactNode {
-//         return (
-//             <div>
-//                 {this.props.myArray.map((el: string) => (<Display name={el} />))}
-//             </div>
-//         )
-//     }
-// }
-
 
 function HighLevelComponent(props: { myArray: string[]; }):ReactElement<any, any> { 
     return(
