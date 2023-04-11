@@ -1,0 +1,15 @@
+prerequisits
+
+	install node
+
+Step 1:	npm init -y
+Step 2: npm install react react-dom
+Step 3: npm install @babel/core @babel/preset-env @babel/preset-react babel-loader
+step 4: Create .babelre file and add following block of code:
+	{
+    		"presets": ["@babel/preset-react", "@babel-preset-env"]
+	}
+Step 5: install webpack
+	npm install webpack webpack-cli webpack-dev-server
+Step 6: Create webpack.config.js and configure it
+Step 7: create src folder
