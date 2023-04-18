@@ -13,6 +13,11 @@ export default function Useref() {
         refVal.current?.focus()
     }
 
+    const inputElement = useRef(<input></input>);
+
+    const focusInput = () => {
+    };
+
     return (
         <>
             <h1>useRef</h1>
@@ -26,8 +31,20 @@ export default function Useref() {
             <input ref={refVal} type="text" onChange={e => setName(e.target.value)} />
             <p>{`You typed ${name}`}</p>
             <button onClick={focus}>Focus</button>
+
+            <hr />
+            <input type="text" />
+            <button onClick={focusInput}>Focus Input</button>
         </>
 
 
     )
+
+    
+
+    return (
+        <>
+            
+        </>
+    );
 }
