@@ -1,5 +1,13 @@
 import './App.css';
-import Product from './components/product/Product';
+import { lazy, Suspense, useState } from 'react';
+import Loading from './components/loading';
+const Product = lazy(() => getDelay(import('./components/product/Product')));
+
+function getDelay(promise) {
+  return new Promise(resolve => {
+    setTimeout(resolve, 2000)
+  }).then(() => promise)
+}
 
 function App() {
   const expenses = [
@@ -8,31 +16,20 @@ function App() {
       title: 'Toilet Paper',
       amount: 94.12,
       date: new Date(2020, 7, 14),
-    },
-    {
-      id: 'e2',
-      title: 'New TV', 
-      amount: 799.49, 
-      date: new Date(2021, 2, 12)
-    },
-    {
-      id: 'e3',
-      title: 'Car Insurance',
-      amount: 294.67,
-      date: new Date(2021, 2, 28),
-    },
-    {
-      id: 'e4',
-      title: 'New Desk (Wooden)',
-      amount: 450,
-      date: new Date(2021, 5, 12),
-    },
+    }
   ];
+  const [preview, setPreview] = useState(false)
+  console.log(preview);
   return (
     <div className="App">
-      {expenses.map(product => (
-        <Product title = {product.title} amount = {product.amount} date = {product.date.toUTCString()} />
-      ))} 
+      <label htmlFor="showPreview">Show preview</label>
+      <input type="checkbox" checked={preview} name="showPreview" id="" onChange={e => setPreview(e.target.checked)} />
+        { preview && (
+          <Suspense fallback={<Loading />}>
+            <Product key={expenses[0].id} title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date.toUTCString()} />
+          </Suspense>
+        )}
+          
     </div>
   );
 }
